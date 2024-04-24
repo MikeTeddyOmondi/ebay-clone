@@ -1,0 +1,20 @@
+services:
+  app:
+    container_name: soko247
+    image: ranckosolutionsinc/soko247:v1.0.0
+    ports:
+      - 3344:3000
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL}
+      - NEXT_PUBLIC_STRIPE_PK_KEY=${NEXT_PUBLIC_STRIPE_PK_KEY}
+      - STRIPE_SK_KEY=${STRIPE_SK_KEY}
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    name: proxy-net
+    external: true
